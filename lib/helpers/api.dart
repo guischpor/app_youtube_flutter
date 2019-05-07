@@ -1,4 +1,6 @@
+import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:youtube_app_flutter/models/video.dart';
 //link1
 //"https://www.googleapis.com/youtube/v3/search?part=snippet&q=$search&type=video&key=$API_KEY&maxResults=10"
 
@@ -20,7 +22,18 @@ class Api {
   }
 
   //essa função vai notificar se o codigo de resposto foi o codigo de 200, quer dizer que está ok.
-  decode(http.Response response) {
-    if (response.statusCode == 200) {}
+  List<Video> decode(http.Response response) {
+    if (response.statusCode == 200) {
+      var decoded = json.decode(response.body);
+
+      //nessa função retornara uma lista com todos os items que vamos usar
+      List<Video> videos = decoded['items'].map<Video>((map) {
+        return Video.fromJson(map);
+      }).toList();
+
+      return videos;
+    } else {
+      throw Exception('Falha ao carregar os vídeos');
+    }
   }
 }

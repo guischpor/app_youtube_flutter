@@ -8,8 +8,8 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Image.asset('images/logoRgb.png'),
-        centerTitle: true,
         backgroundColor: Colors.black,
+        actions: <Widget>[],
       ),
     );
   }
