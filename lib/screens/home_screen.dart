@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatefulWidget {
-  HomeScreen({Key key}) : super(key: key);
+class HomeScreen extends StatelessWidget {
+  //const HomeScreen({Key key}) : super(key: key);
 
-  _HomeScreenState createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.red,
+    return Scaffold(
+      appBar: AppBar(
+        title: Image.asset('images/logoRgb.png'),
+        centerTitle: true,
+        backgroundColor: Colors.black,
+      ),
     );
   }
 }
