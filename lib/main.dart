@@ -3,8 +3,8 @@ import 'package:youtube_app_flutter/helpers/api.dart';
 import 'package:youtube_app_flutter/screens/home_screen.dart';
 
 void main() {
-  Api api = Api();
-  api.search('eletro');
+  // Api api = Api();
+  // api.search('eletro');
   runApp(YotubeAppFlutter());
 }
 

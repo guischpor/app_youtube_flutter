@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:youtube_app_flutter/models/video.dart';
-//link1
+//link1 utilizado para realizar a pesqusa dos videos
 //"https://www.googleapis.com/youtube/v3/search?part=snippet&q=$search&type=video&key=$API_KEY&maxResults=10"
 
 //link2
