@@ -7,7 +7,7 @@ class YotubeAppFlutter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'App Youtube Flutter',
       home: HomeScreen(),
       debugShowCheckedModeBanner: false,
     );
