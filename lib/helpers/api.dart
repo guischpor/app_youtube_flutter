@@ -7,7 +7,7 @@ import 'package:youtube_app_flutter/models/video.dart';
 //link2
 //"https://www.googleapis.com/youtube/v3/search?part=snippet&q=$_search&type=video&key=$API_KEY&maxResults=10&pageToken=$_nextToken"
 
-//link3
+//link3 - link utilizado para retorna sugestões do campo de pesquisa
 //"http://suggestqueries.google.com/complete/search?hl=en&ds=yt&client=youtube&hjson=t&cp=1&q=$search&format=5&alt=json"
 
 const API_KEY = 'AIzaSyDLEGmqkyAXpgNCERCdi0p6VwyaJpbV__s';

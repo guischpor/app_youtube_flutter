@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:youtube_app_flutter/delegates/data_search.dart';
 
 class HomeScreen extends StatelessWidget {
   //const HomeScreen({Key key}) : super(key: key);
@@ -26,7 +27,9 @@ class HomeScreen extends StatelessWidget {
           ),
           IconButton(
             icon: Icon(Icons.search),
-            onPressed: () {},
+            onPressed: () {
+              showSearch(context: context, delegate: DataSearch());
+            },
           )
         ],
       ),
