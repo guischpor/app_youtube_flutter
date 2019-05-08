@@ -27,8 +27,10 @@ class HomeScreen extends StatelessWidget {
           ),
           IconButton(
             icon: Icon(Icons.search),
-            onPressed: () {
-              showSearch(context: context, delegate: DataSearch());
+            onPressed: () async {
+              String result =
+                  await showSearch(context: context, delegate: DataSearch());
+              print(result);
             },
           )
         ],
