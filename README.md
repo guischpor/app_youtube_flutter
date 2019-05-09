@@ -1,16 +1,14 @@
-# youtube_app_flutter
+# App Flutter Youtube
 
-A new Flutter project.
+App construído em Flutter.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+Esse projeto foi baseado no app do Youtube, foi construído em Flutter.
 
-A few resources to get you started if this is your first Flutter project:
+- [Download da apk - App Flutter Youtube](https://drive.google.com/file/d/1L4BPBxu7N0ljoBaozaYoslMzWn1bSxCG/view?usp=sharing)
 
-- [Lab: Write your first Flutter app](https://flutter.io/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.io/docs/cookbook)
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.io/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+### Imagens do App Flutter Youtube
+
+![Alt Text]()
