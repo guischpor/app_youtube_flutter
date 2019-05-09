@@ -18,7 +18,7 @@ class Video {
     else {
       //retorna o tipo json que realmente queremos para salvar na lista de favs
       return Video(
-          id: json['id'],
+          id: json['videoId'],
           title: json['title'],
           thumb: json['thumb'],
           channel: json['channel']);

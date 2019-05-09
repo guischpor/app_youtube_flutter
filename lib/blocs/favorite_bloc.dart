@@ -15,6 +15,7 @@ class FavoriteBloc implements BlocBase {
   //função que salvara permanentemente os favoritos a lista
   FavoriteBloc() {
     SharedPreferences.getInstance().then((prefs) {
+      //prefs.clear();
       if (prefs.getKeys().contains('favorites')) {
         //nesse ponto estamos convertendo o _favorite em um mapa
         _favorites = json.decode(prefs.getString('favorites')).map((k, v) {
