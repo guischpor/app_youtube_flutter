@@ -1,8 +1,10 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/material.dart';
+import 'package:youtube_app_flutter/blocs/favorite_bloc.dart';
 import 'package:youtube_app_flutter/blocs/videos_bloc.dart';
 import 'package:youtube_app_flutter/components/videos_tiles.dart';
 import 'package:youtube_app_flutter/delegates/data_search.dart';
+import 'package:youtube_app_flutter/models/video.dart';
 
 class HomeScreen extends StatelessWidget {
   //const HomeScreen({Key key}) : super(key: key);
@@ -10,6 +12,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bloc = BlocProvider.of<VideosBloc>(context);
+    final blocFavorite = BlocProvider.of<FavoriteBloc>(context);
     return Scaffold(
       appBar: AppBar(
         title: Container(
@@ -23,7 +26,16 @@ class HomeScreen extends StatelessWidget {
         actions: <Widget>[
           Align(
             alignment: Alignment.center,
-            child: Text('0'),
+            child: StreamBuilder<Map<String, Video>>(
+              stream: blocFavorite.outFav,
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return Text("${snapshot.data.length}");
+                } else {
+                  return Container();
+                }
+              },
+            ),
           ),
           IconButton(
             icon: Icon(Icons.star),
