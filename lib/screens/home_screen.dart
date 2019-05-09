@@ -1,6 +1,7 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/material.dart';
 import 'package:youtube_app_flutter/blocs/videos_bloc.dart';
+import 'package:youtube_app_flutter/components/videos_tiles.dart';
 import 'package:youtube_app_flutter/delegates/data_search.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -44,7 +45,10 @@ class HomeScreen extends StatelessWidget {
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return ListView.builder(
-              itemBuilder: null,
+              itemBuilder: (context, index) {
+               return VideosTiles(snapshot.data[index]);
+              },
+              itemCount: snapshot.data.length,
             );
           } else {
             return Container();
