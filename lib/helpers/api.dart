@@ -4,7 +4,7 @@ import 'package:youtube_app_flutter/models/video.dart';
 //link1 utilizado para realizar a pesqusa dos videos
 //"https://www.googleapis.com/youtube/v3/search?part=snippet&q=$search&type=video&key=$API_KEY&maxResults=10"
 
-//link2
+//link2 - utilizado o token para carregar a proxima paginas com novos videos
 //"https://www.googleapis.com/youtube/v3/search?part=snippet&q=$_search&type=video&key=$API_KEY&maxResults=10&pageToken=$_nextToken"
 
 //link3 - link utilizado para retorna sugestões do campo de pesquisa
@@ -13,10 +13,23 @@ import 'package:youtube_app_flutter/models/video.dart';
 const API_KEY = 'AIzaSyDLEGmqkyAXpgNCERCdi0p6VwyaJpbV__s';
 
 class Api {
+  String _search;
+  String _nextToken;
+
   //função de busca dos vídeos do youtube
-  search(String search) async {
+  Future<List<Video>> search(String search) async {
+    _search = search;
+
     http.Response response = await http.get(
         "https://www.googleapis.com/youtube/v3/search?part=snippet&q=$search&type=video&key=$API_KEY&maxResults=10");
+    //decode serve para decodificar  o response
+    return decode(response);
+  }
+
+  //função lista infinita de videos
+  Future<List<Video>> nextPage() async {
+    http.Response response = await http.get(
+        "https://www.googleapis.com/youtube/v3/search?part=snippet&q=$_search&type=video&key=$API_KEY&maxResults=10&pageToken=$_nextToken");
     //decode serve para decodificar  o response
     return decode(response);
   }
@@ -25,6 +38,8 @@ class Api {
   List<Video> decode(http.Response response) {
     if (response.statusCode == 200) {
       var decoded = json.decode(response.body);
+
+      _nextToken = decoded['nextPageToken'];
 
       //nessa função retornara uma lista com todos os items que vamos usar
       List<Video> videos = decoded['items'].map<Video>((map) {

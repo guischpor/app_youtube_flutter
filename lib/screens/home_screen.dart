@@ -9,6 +9,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bloc = BlocProvider.of<VideosBloc>(context);
     return Scaffold(
       appBar: AppBar(
         title: Container(
@@ -33,22 +34,41 @@ class HomeScreen extends StatelessWidget {
             onPressed: () async {
               String result =
                   await showSearch(context: context, delegate: DataSearch());
-              if (result != null)
-                BlocProvider.of<VideosBloc>(context).inSearch.add(result);
+              if (result != null) bloc.inSearch.add(result);
             },
           )
         ],
       ),
       backgroundColor: Colors.black87,
       body: StreamBuilder(
-        stream: BlocProvider.of<VideosBloc>(context).outVideos,
+        stream: bloc.outVideos,
+        initialData: [],
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return ListView.builder(
               itemBuilder: (context, index) {
-               return VideosTiles(snapshot.data[index]);
+                //esse se a lista de video estiver até o 9, está na primeira pagina
+                if (index < snapshot.data.length) {
+                  return VideosTiles(snapshot.data[index]);
+                }
+                //caso contrário ele tentara encontrar o novo video, ele  tentara buscar esse dado
+                else if (index > 1) {
+                  //ele retornara apenas a pagina nova
+                  bloc.inSearch.add(null);
+                  return Container(
+                    height: 40.0,
+                    width: 40.0,
+                    alignment: Alignment.center,
+                    child: CircularProgressIndicator(
+                      valueColor:
+                          AlwaysStoppedAnimation<Color>(Colors.red[600]),
+                    ),
+                  );
+                } else {
+                  return Container();
+                }
               },
-              itemCount: snapshot.data.length,
+              itemCount: snapshot.data.length + 1,
             );
           } else {
             return Container();
