@@ -5,6 +5,7 @@ import 'package:youtube_app_flutter/blocs/videos_bloc.dart';
 import 'package:youtube_app_flutter/components/videos_tiles.dart';
 import 'package:youtube_app_flutter/delegates/data_search.dart';
 import 'package:youtube_app_flutter/models/video.dart';
+import 'package:youtube_app_flutter/screens/favorites_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   //const HomeScreen({Key key}) : super(key: key);
@@ -39,7 +40,10 @@ class HomeScreen extends StatelessWidget {
           ),
           IconButton(
             icon: Icon(Icons.star),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => FavoriteScreen()));
+            },
           ),
           IconButton(
             icon: Icon(Icons.search),
