@@ -18,7 +18,7 @@ class Api {
     http.Response response = await http.get(
         "https://www.googleapis.com/youtube/v3/search?part=snippet&q=$search&type=video&key=$API_KEY&maxResults=10");
     //decode serve para decodificar  o response
-    decode(response);
+    return decode(response);
   }
 
   //essa função vai notificar se o codigo de resposto foi o codigo de 200, quer dizer que está ok.

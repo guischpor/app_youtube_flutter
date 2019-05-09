@@ -8,11 +8,11 @@ class VideosBloc implements BlocBase {
 
   List<Video> videos;
 
-  final _videosController = StreamController();
+  final _videosController = StreamController<List<Video>>();
   //declarar uma variavel do tipo stream para saida
   Stream get outVideos => _videosController.stream;
 
-  final _searchController = StreamController();
+  final _searchController = StreamController<String>();
 
   //declarar uma variavel do tipo sink para entrada
   Sink get inSearch => _searchController.sink;
@@ -26,7 +26,8 @@ class VideosBloc implements BlocBase {
 
   void _search(String search) async {
     videos = await api.search(search);
-    print(videos);
+    _videosController.sink.add(videos);
+
   }
 
   /*todos os strems controller devem ser fechados*/
